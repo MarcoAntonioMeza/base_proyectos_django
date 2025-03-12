@@ -1,0 +1,14 @@
+venv
+/sepomex
+db.sqlite3
+__pycache__
+imagen_pieza
+#/apps/static/assets/vendor/
+#/apps/static/assets/vendor
+/profile_pics/
+media/*
+staticfiles/
+.env
+
+enpowerSqlV1.sql
+scripts/

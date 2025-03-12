@@ -1,0 +1,91 @@
+{% extends 'layouts/base.html' %}
+{% block title %} HOME {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<!-- FullCalendar CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block content %}
+
+
+<!-- Header -->
+<div class="header bg-primary pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center ">
+        <div class="col-md-6 ">
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item active "><a href="#">INICIO</a></li>
+              <!--<li class="breadcrumb-item active" aria-current="page">Default</li>-->
+            </ol>
+          </nav>
+        </div>
+       
+      </div>
+      
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="container-fluid mt--6">
+  <div class=" mt-5">
+    <div class="card">
+     
+      <div class="card-body">
+        <div id="calendar"></div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+
+
+<!-- Solo FullCalendar -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+<!-- Archivo de idioma español para FullCalendar -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/locale/es.js"></script>
+
+
+
+<script>
+
+$(document).ready(function() {
+        $('#calendar').fullCalendar({
+            locale: 'es',
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            }
+        });
+    });
+ 
+
+</script>
+
+<script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+
+{% endblock javascripts %}

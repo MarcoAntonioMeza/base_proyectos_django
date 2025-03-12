@@ -1,0 +1,131 @@
+:root {
+    /* Paleta principal */
+    --primary-color: #314185;    /* Azul profesional */
+    --secondary-color: #FFA726;  /* Naranja energético */
+    --accent-color: #4CAF50;     /* Verde sostenibilidad */
+    --light-bg: #F8F9FA;         /* Fondo claro */
+    --dark-text: #2D3436;        /* Texto oscuro */
+    --light-text: #FFFFFF;       /* Texto claro */
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--dark-text);
+    background: linear-gradient(15deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Header */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1E3A5A 100%);
+    border-bottom: 4px solid var(--secondary-color);
+}
+
+/* Tarjetas */
+.card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.card-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--secondary-color);
+}
+
+/* Botones */
+.btn-primary {
+    background: var(--primary-color);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background: #1E3A5A;
+    box-shadow: 0 4px 15px rgba(42, 92, 130, 0.3);
+}
+
+.btn-primary::after {
+    content: "→";
+    position: absolute;
+    right: -20px;
+    transition: right 0.3s ease;
+}
+
+.btn-primary:hover::after {
+    right: 15px;
+}
+
+/* Modal */
+.modal-header {
+    background: var(--primary-color);
+    color: var(--light-text);
+}
+
+.modal-content {
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+}
+
+/* Rango personalizado */
+input[type="range"]::-webkit-slider-thumb {
+    background: var(--secondary-color);
+    width: 20px;
+    height: 20px;
+}
+
+/* Efectos especiales */
+.glow-effect {
+    position: relative;
+}
+
+.glow-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 0%, 
+        rgba(255, 167, 38, 0.2) 0%, 
+        transparent 60%);
+    pointer-events: none;
+}
+.energy-gradient {
+    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+}
+
+.sun-icon {
+    background: radial-gradient(circle, #FFD700 20%, #FFA726 100%);
+}
+@keyframes solar-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.solar-animation {
+    animation: solar-pulse 3s infinite;
+}

@@ -1,0 +1,98 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="es-MX">
+
+
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="canonical" href="https://appseed.us/admin-dashboards/django-dashboard-argon">
+
+  <title>
+    {% block title %} {% endblock %}
+  </title>
+
+  <!-- Favicon - loaded as static -->
+  <link rel="icon" href="/static/assets/img/brand/favicon-logo.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="/static/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Page plugins -->
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="/static/assets/css/argon.css?v=1.2.0" type="text/css">
+
+
+
+  <!-- Specific CSS goes HERE -->
+  {% block stylesheets %}{% endblock stylesheets %}
+
+</head><!-- Cargar primero jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Luego cargar Select2 -->
+
+
+<body>
+  <div id="loader" class="loader-container">
+    <div class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="loading-text">CARGANDO . . .</div>
+  </div>
+
+  <div class="toast-container" id="toast-container">
+    <div class="toast" id="toast_id">🧩 No disponible por el momento</div>
+  </div>
+  <!-- Botón de toggle para el menú en pantallas pequeñas -->
+
+  {% include "includes/sidenav.html" %}
+
+
+  <div class="main-content" id="panel">
+
+    {% if messages %}
+    <div class="alert-container" style="position: fixed; top: 10px; right: 10px; z-index: 1050;">
+      {% for message in messages %}
+      <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+        <strong>Mensaje:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div></div>
+
+    {% include "includes/navigation.html" %}
+
+    <div class="master">
+      {% block content %}{% endblock content %}
+      {% include "includes/footer.html" %}
+    </div>
+
+
+
+
+
+
+  </div>
+
+  {% include "includes/scripts.html" %}
+
+  <!-- Specific JS goes HERE -->
+  {% block javascripts %}
+  {% endblock javascripts %}
+
+  <script src="/static/assets/js/argon.js?v=1.2.0"></script>
+
+
+</body>
+
+</html>

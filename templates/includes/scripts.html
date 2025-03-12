@@ -1,0 +1,125 @@
+<!-- JavaScript de Bootstrap (al final del body) 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<script src="/static/assets/vendor/jquery/dist/jquery.min.js"></script>-->
+<script src="/static/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="/static/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="/static/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<link href=" /static/assets/vendor/select2/dist/css/select2.min.css" rel="stylesheet" />
+<script src="/static/assets/vendor/select2/dist/js/select2.min.js"></script>
+
+<script>
+  $('#loader').hide();
+
+  //mostrarToast('¡Cuestionario guardado con éxito!', 'success');
+  function mostrarToast(mensaje) {
+    let toastContainer = document.getElementById('toast-container');
+    let toast = document.getElementById('toast_id');
+    toast.innerHTML = mensaje.toUpperCase();
+    // Mostrar el toast
+    toastContainer.style.display = 'block';
+
+
+    setTimeout(() => {
+      toast.innerHTML = '';
+      toastContainer.style.display = 'none';
+    }, 3000);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    $('.master').addClass('loaded');
+    //document.body.classList.add("loaded");
+  });
+    $('select.custom-select').select2({
+      width: '100%',
+      allowClear: true,
+      placeholder: function () {
+        return $(this).data('placeholder');
+      }
+    });
+    $('.select2-container .select2-selection--single').css('height', 'calc(2.55rem + 2px)');
+
+  function actualizarFechaHora() {
+    const ahora = new Date();
+    const opciones = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      //second: '2-digit',
+    };
+    let hora = document.getElementById('datetime');
+    if (hora) {
+      hora.textContent = ahora.toLocaleDateString('es-ES', opciones);
+    }
+  }
+
+  // Actualizar cada segundo
+  setInterval(actualizarFechaHora, 1000);
+
+  // Mostrar inmediatamente
+  actualizarFechaHora();
+
+  let sel = document.querySelector('.disable-div')
+  if (sel) {
+    sel.addEventListener('click', (event) => {
+      const toastContainer = document.getElementById('toast-container');
+
+      // Mostrar el toast
+      toastContainer.style.display = 'block';
+
+      // Deshabilitar todos los elementos dentro del div
+      const div = event.currentTarget; // El div clickeado
+      const inputs = div.querySelectorAll('input, textarea, select, button');
+      inputs.forEach((input) => {
+        input.disabled = true;
+      });
+
+      // Ocultar el toast automáticamente después de 3 segundos
+      setTimeout(() => {
+        toastContainer.style.display = 'none';
+      }, 3000);
+    });
+  }
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+
+    fileInputs.forEach(input => {
+      input.disabled = true; // Deshabilitar el input
+
+      // Crear el mensaje debajo del input
+      const legend = document.createElement("span");
+      legend.textContent = "No disponible por el momento";
+      legend.style.color = "#999";
+      legend.style.fontSize = "0.9rem";
+      legend.style.fontStyle = "italic";
+
+      // Insertar el mensaje después del input
+      input.parentNode.insertBefore(legend, input.nextSibling);
+    });
+  });
+
+
+  // Mostrar los toasts cuando se cargue la página
+
+  var toastElements = document.querySelectorAll('.toast');
+  toastElements.forEach(function (toastElement) {
+    var toast = new bootstrap.Toast(toastElement, {
+      autohide: true, // El toast se oculta automáticamente
+      delay: 5000 // Duración antes de que se oculte (en milisegundos)
+    });
+    toast.show();
+  });
+
+
+
+
+</script>
