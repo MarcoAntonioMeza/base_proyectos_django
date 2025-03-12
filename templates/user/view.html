@@ -33,7 +33,7 @@
                     {% if perms.usuarios.can_delete_cliente %}
                     <a href="{% url 'user_delete' usuario.id %}" class="btn btn-lg btn-danger">ELIMINAR</a>
                     {% endif %}
-                    <a href="{% url 'clientes_index' %}" class="btn btn-lg btn-secondary">CANCELAR</a>
+                    <a href="{% url 'user_index' %}" class="btn btn-lg btn-secondary">CANCELAR</a>
                 </div>
             </div>
         </div>
