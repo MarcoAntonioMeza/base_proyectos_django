@@ -14,11 +14,11 @@ def crear_permisos_personalizados(sender, **kwargs):
         ("can_create_grupo", "CREAR GRUPO"),
         ("can_delete_grupo", "ELIMINAR GRUPO"),
     ]
-    #for codename, name in permisos:
-    #    permiso, created = Permission.objects.get_or_create(
-    #        codename=codename,
-    #        name=name,
-    #        content_type=content_type,
-    #    )
-    #    if created:
-    #        print(f"Permiso '{name}' creado automáticamente.")
+    for codename, name in permisos:
+        permiso, created = Permission.objects.get_or_create(
+            codename=codename,
+            name=name,
+            content_type=content_type,
+        )
+        if created:
+            print(f"Permiso '{name}' creado automáticamente.")

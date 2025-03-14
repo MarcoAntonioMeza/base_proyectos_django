@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-m$w84%rh-!ej_)wna%m1l&38mpu&5lhura3_(qsckdttlwoavh
 DEBUG = True
 
 ALLOWED_HOSTS = []
-APPLY_LOAD_SEPOMEX = True
+APPLY_LOAD_SEPOMEX = False
 
 
 # Application definition
@@ -82,7 +82,7 @@ DATABASES = {
     #}
     'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'bd_initial',       # Nombre de tu base de datos
+            'NAME': 'ifnb_cartera',       # Nombre de tu base de datos
             'USER': 'postgres',          # Usuario de la base de datos
             'PASSWORD': '2808',          # Contraseña del usuario
             'HOST': 'localhost',               # Dirección del servidor, 'localhost' para uso local
@@ -138,4 +138,4 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'usuario.Usuario'
-LOGIN_URL = '/login'
+LOGIN_URL = '/login/'
