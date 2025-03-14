@@ -1,0 +1,144 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}{{ cliente.full_name }}{% endblock title %}
+
+{% block content %}
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'home' %}"><i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'clientes_index' %}">Clientes</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ cliente.full_name }} {{ cliente.id }}
+                    </li>
+                </ol>
+            </nav>
+            <!-- Title -->
+            <div class="row align-items-center py-4">
+
+                <div class="col-lg-12 col-5 text-right">
+                    {% if perms.clientes.can_update_cliente %}
+                    <a href="{% url 'cliente_update' cliente.id %}" class="btn btn-lg btn-neutral">EDITAR</a>
+                    {% endif %}
+                    {% if perms.clientes.can_delete_cliente %}
+                    <a href="{% url 'cliente_delete' cliente.id %}" class="btn btn-lg btn-danger">ELIMINAR</a>
+                    {% endif %}
+                    <a href="{% url 'clientes_index' %}" class="btn btn-lg btn-secondary">VOLVER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Movimientos</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row my-4">
+                        <div class="col-md-3 font-weight-bold">CREADO EL:</div>
+                        <div class="col-md-3">{{ cliente.creado_el }}</div>
+                        <div class="col-md-3 font-weight-bold">Creado por:</div>
+                        <div class="col-md-3">{{ cliente.creado_por }}</div>
+                    </div>
+        
+                    <div class="row my-4">
+                        <div class="col-md-3 font-weight-bold">Última actualización:</div>
+                        <div class="col-md-3">{{ cliente.actualizado_el }}</div>
+                        <div class="col-md-3 font-weight-bold">Actualizado por:</div>
+                        <div class="col-md-3">{{ cliente.actualizado_por }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <!-- Información del Cliente -->
+        <div class="col-lg-6">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Información Personal</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Nombres:</strong> {{ cliente.nombres }}</p>
+                    <p><strong>Apellido Paterno:</strong> {{ cliente.apellido_paterno }}</p>
+                    <p><strong>Apellido Materno:</strong> {{ cliente.apellido_materno }}</p>
+                    <p><strong>CURP:</strong> {{ cliente.curp }}</p>
+                    <p><strong>RFC:</strong> {{ cliente.rfc }}</p>
+                    <p><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
+                    <p><strong>Teléfono Alternativo:</strong> {{ cliente.telefono2|default:"No disponible" }}</p>
+                    <p><strong>Correo Electrónico:</strong> {{ cliente.email }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detalles Adicionales -->
+        <div class="col-lg-6">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Detalles Adicionales</h3>
+                </div>
+                <div class="card-body">
+                   
+
+                    <p><strong>Tipo:</strong> {{ cliente.get_tipo_display }}</p>
+                    <p><strong>STATUS:</strong> {{ cliente.get_status_display }}</p>
+                    <p><strong>Giro:</strong> {{ cliente.giro|default:"No especificado" }}</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dirección del Cliente -->
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Dirección</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p><strong>Estado:</strong> {{ direccion.estado.nombre }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><strong>Municipio:</strong> {{ direccion.municipio.nombre }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><strong>Colonia:</strong> {{ direccion.colonia.d_asenta }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p><strong>Calle:</strong> {{ direccion.calle }}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p><strong>No. Interior:</strong> {{ direccion.numero_interior|default:"N/A" }}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p><strong>No. Exterior:</strong> {{ direccion.numero_exterior }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

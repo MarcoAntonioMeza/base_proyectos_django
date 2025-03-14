@@ -30,9 +30,11 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'rest_framework',
     'apps.adminv2',
+    'apps.clientes',
     
     'apps.usuario',
     'apps.direccion',
+    'apps.cartera',
 ]
 
 MIDDLEWARE = [

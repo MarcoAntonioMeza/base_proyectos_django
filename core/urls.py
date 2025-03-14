@@ -16,10 +16,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
-    path("adminv2/", include("apps.adminv2.urls")),
     
+    path("adminv2/", include("apps.adminv2.urls")),
     path("usuario/", include("apps.usuario.urls")),
     path("direccion/", include("apps.direccion.urls")),
+    
+    #CLIENTES
+    path("clientes/", include("apps.clientes.urls")),
    
     
     path("", include("apps.home.urls")),  

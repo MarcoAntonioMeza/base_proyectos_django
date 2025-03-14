@@ -43,13 +43,13 @@ def listado_modulos(request):
             ]
         },
         {
-            'nombre': 'CRM',
+            'nombre': 'CLIENTES',
             'url': 'can_view_cliente',
             'app': 'clientes',
             'icono': 'fa-users',  # Icono para el módulo 'Ventas'
             'submodulos': [
                 {
-                    'app': 'crm',
+                    'app': 'clientes',
                     'nombre': 'clientes',
                     'permiso': 'can_view_cliente',
                     'url': 'clientes_index',#clientes_index
